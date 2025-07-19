@@ -125,27 +125,38 @@ export const WebsiteMockup = ({ show }: WebsiteMockupProps) => {
   const [currentSite, setCurrentSite] = useState(0);
   const [elements, setElements] = useState<string[]>([]);
 
+  // Detect mobile for performance optimization
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
   useEffect(() => {
     if (show) {
+      const delay = isMobile ? 500 : 1000; // Faster on mobile
       const timers = [
-        setTimeout(() => setElements((prev) => [...prev, "header"]), 1000),
-        setTimeout(() => setElements((prev) => [...prev, "hero"]), 2000),
-        setTimeout(() => setElements((prev) => [...prev, "content"]), 3000),
-        setTimeout(() => setElements((prev) => [...prev, "footer"]), 4000),
+        setTimeout(() => setElements((prev) => [...prev, "header"]), delay),
+        setTimeout(() => setElements((prev) => [...prev, "hero"]), delay * 1.5),
+        setTimeout(
+          () => setElements((prev) => [...prev, "content"]),
+          delay * 2,
+        ),
+        setTimeout(
+          () => setElements((prev) => [...prev, "footer"]),
+          delay * 2.5,
+        ),
       ];
       return () => timers.forEach(clearTimeout);
     }
-  }, [show]);
+  }, [show, isMobile]);
 
   // Auto rotate websites
   useEffect(() => {
     if (show && elements.length >= 4) {
+      const rotationInterval = isMobile ? 6000 : 4000; // Slower rotation on mobile
       const interval = setInterval(() => {
         setCurrentSite((prev) => (prev + 1) % websites.length);
-      }, 4000);
+      }, rotationInterval);
       return () => clearInterval(interval);
     }
-  }, [show, elements.length]);
+  }, [show, elements.length, isMobile]);
 
   if (!show) return null;
 
@@ -156,7 +167,7 @@ export const WebsiteMockup = ({ show }: WebsiteMockupProps) => {
     <motion.div
       initial={{ scale: 0.8, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
-      className="w-88 h-57 bg-white rounded-lg shadow-2xl overflow-hidden border-2 border-gray-200 relative"
+      className="w-[461px] h-[230px] bg-white rounded-lg shadow-2xl overflow-hidden border-2 border-gray-200 relative"
     >
       {/* Browser Header */}
       <div className="h-6 bg-gray-100 flex items-center px-2 space-x-1 border-b">
@@ -174,7 +185,7 @@ export const WebsiteMockup = ({ show }: WebsiteMockupProps) => {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -20 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: isMobile ? 0.3 : 0.5 }}
           className="h-full p-3 space-y-2"
         >
           {/* Header */}

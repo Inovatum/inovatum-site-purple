@@ -5,30 +5,8 @@ import { theme } from "@/lib/theme";
 
 // Code snippets that will be "typed"
 const codeLines = [
-  "// Desenvolvendo soluções Inovatum",
-  "const InovatumPlatform = () => {",
-  "  return (",
-  "    <Enterprise>",
-  "      <CloudServices />",
-  "      <DigitalTransformation />",
-  "      <ScalableSolutions />",
-  "      <AIIntegration />",
-  "    </Enterprise>",
-  "  );",
-  "};",
-  "",
-  "// Sistema empresarial em produção",
-  "const BusinessSuite = () => {",
-  "  return (",
-  "    <Platform>",
-  "      <CRM />",
-  "      <Analytics />",
-  "      <Automation />",
-  "    </Platform>",
-  "  );",
-  "};",
-  "",
-  "// Deploy em produção ✅",
+  "// Desenvolvendo seu Site",
+  "// Desenvolvendo seu Aplicativo",
 ];
 
 // Simple typewriter hook
@@ -94,16 +72,18 @@ export const CodeAnimation = ({ onProgress }: CodeAnimationProps) => {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8, delay: 0.5 }}
-      className="bg-gray-900 rounded-lg p-4 font-mono text-sm w-88 shadow-2xl border border-slate-700"
-      style={{ minHeight: "220px" }}
+      className="bg-gray-900 rounded-lg p-3 font-mono text-sm w-[484px] shadow-2xl border border-slate-700 mx-auto"
+      style={{ minHeight: "100px" }}
     >
       {/* Terminal Header */}
-      <div className="flex items-center mb-3 space-x-2">
-        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-        <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-        <Terminal className="h-4 w-4 text-gray-400 ml-2" />
-        <span className="text-gray-400 text-xs">inovatum-platform.tsx</span>
+      <div className="flex items-center mb-2 space-x-1">
+        <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+        <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+        <Terminal className="h-3 w-3 text-gray-400 ml-1" />
+        <span className="text-gray-400 text-[0.6rem]">
+          inovatum-platform.tsx
+        </span>
       </div>
 
       {/* Code Lines */}
