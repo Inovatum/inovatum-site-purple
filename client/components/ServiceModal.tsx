@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 import { X, CheckCircle, Star, Zap } from "lucide-react";
 
 interface Service {
@@ -26,6 +27,10 @@ export const ServiceModal = ({
   onClose,
   service,
 }: ServiceModalProps) => {
+  const [headerVisible, ] = useState(true);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+
   if (!service) return null;
 
   return (
@@ -48,23 +53,30 @@ export const ServiceModal = ({
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             className="fixed inset-4 sm:inset-8 md:inset-12 lg:inset-16 bg-slate-900 rounded-2xl border border-slate-700 z-50 overflow-hidden"
           >
-            <div className="h-full flex flex-col">
-              {/* Header */}
-              <div className={`bg-gradient-to-r ${service.color} p-6 relative`}>
-                <button
-                  onClick={onClose}
-                  className="absolute top-4 right-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+            <div className="h-full flex flex-col relative">
+              {/* Header - conditionally rendered */}
+              { (
+                <motion.div
+                  
                 >
-                  <X className="h-5 w-5 text-white" />
-                </button>
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                  {service.title}
-                </h2>
-                <p className="text-white/90 text-lg">{service.description}</p>
-              </div>
+                  <button
+                    onClick={onClose}
+                    className="absolute top-4 right-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                  >
+                    <X className="h-5 w-5 text-white" />
+                  </button>
 
-              {/* Content */}
-              <div className="flex-1 overflow-y-auto p-6">
+                </motion.div>
+              )}
+
+              {/* Content - with dynamic height */}
+              <div
+                ref={scrollContainerRef}
+                className="flex-1 overflow-y-auto p-6"
+                style={{
+                  height: headerVisible ? "calc(100% - 140px)" : "100%",
+                }}
+              >
                 <div className="grid md:grid-cols-2 gap-8">
                   {/* Left Column */}
                   <div className="space-y-6">

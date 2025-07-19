@@ -341,21 +341,21 @@ export const WhatsAppButton = () => {
   };
 
   return (
-    <motion.button
-      onClick={handleWhatsAppClick}
-      className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8 py-4 text-lg font-semibold rounded-full group flex items-center justify-center space-x-3"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      <MessageSquare className="h-6 w-6" />
-      <span>Falar no WhatsApp</span>
-      <motion.div
-        className="ml-2"
-        animate={{ x: [0, 5, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
-      >
-        →
-      </motion.div>
-    </motion.button>
+   <motion.button
+  onClick={handleWhatsAppClick}
+  className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8 py-4 text-lg font-semibold rounded-full group flex items-center justify-center space-x-3"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+>
+  <MessageSquare className="h-6 w-6" />
+  <span>Falar no WhatsApp</span>
+  <motion.div
+    className="ml-2"
+    animate={{ x: [0, 5, 0] }}
+    transition={{ duration: 1.5, repeat: Infinity }}
+  >
+    →
+  </motion.div>
+</motion.button>
   );
 };
