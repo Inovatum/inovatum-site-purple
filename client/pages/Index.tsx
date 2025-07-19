@@ -198,7 +198,8 @@ const HeroSection = ({ showWebsite, showMobile, codeProgress, onCodeProgress }: 
             </motion.div>
           </div>
           {/* Right Side - Enhanced Animation */}
-          <div className="relative w-full">
+          {/* Added overflow-hidden to contain scaled content */}
+          <div className="relative w-full overflow-hidden">
             <SparkleEffect className="absolute inset-0" />
             <div className="space-y-6">
               {/* Code Editor - Centered and adjusted */}
@@ -224,18 +225,21 @@ const HeroSection = ({ showWebsite, showMobile, codeProgress, onCodeProgress }: 
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.8 }}
-                    className="flex justify-center md:justify-start md:ml-8 lg:ml-16 xl:ml-24 mb-6"
+                    // Removed md:justify-start and ml classes to allow flex-justify-center to work across all sizes
+                    // Added w-full and max-w-full to ensure it respects parent width
+                    className="flex justify-center mb-6 w-full max-w-full"
                   >
                     <Card3D>
-                      {/* Added w-full here to make the scaled content responsive */}
-                      <div className="transform scale-98 md:scale-113 w-full">
+                      {/* Removed w-full from here, as it's now on the parent motion.div */}
                         <WebsiteMockup show={showWebsite} />
-                      </div>
                     </Card3D>
                   </motion.div>
                 </div>
                 {/* Mobile App Section - Aligned with Browser and Navigation */}
-                <div className="flex items-center justify-center md:justify-start md:ml-8 lg:ml-16 xl:ml-24 gap-6">
+                <div
+                  // Removed md:justify-start and ml classes to allow flex-justify-center to work across all sizes
+                  className="flex items-center justify-center gap-6"
+                >
                   {/* Mobile App - Left side */}
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -244,8 +248,8 @@ const HeroSection = ({ showWebsite, showMobile, codeProgress, onCodeProgress }: 
                     className="flex-shrink-0"
                   >
                     <Card3D>
-                      {/* Added w-full here to make the scaled content responsive */}
-                      <div className="transform scale-63 md:scale-72 w-full">
+                      {/* Removed w-full from here, as it's now on the parent motion.div */}
+                      <div className="transform scale-63 md:scale-72">
                         <MobileAppMockup show={showMobile} />
                       </div>
                     </Card3D>

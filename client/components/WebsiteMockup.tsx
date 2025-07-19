@@ -167,7 +167,8 @@ export const WebsiteMockup = ({ show }: WebsiteMockupProps) => {
     <motion.div
       initial={{ scale: 0.8, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
-      className="w-[461px] h-[230px] bg-white rounded-lg shadow-2xl overflow-hidden border-2 border-gray-200 relative"
+      className="w-[312px] h-[156px] xs:w-[390px] xs:h-[195px] sm:w-[499px] sm:h-[250px] md:w-[624px] md:h-[312px] lg:w-[553px] lg:h-[276px] bg-white rounded-lg shadow-2xl overflow-hidden border-2 border-gray-200 relative"
+
     >
       {/* Browser Header */}
       <div className="h-6 bg-gray-100 flex items-center px-2 space-x-1 border-b">
