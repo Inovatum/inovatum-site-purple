@@ -53,10 +53,8 @@ export default function Index() {
       {/* Background Effects */}
       <MorphingShapes />
       <FloatingCodeParticles />
-
       {/* Header Navigation */}
       <Header />
-
       {/* Hero Section */}
       <HeroSection
         showWebsite={showWebsite}
@@ -64,20 +62,14 @@ export default function Index() {
         codeProgress={codeProgress}
         onCodeProgress={handleCodeProgress}
       />
-
-
       {/* Company Section */}
       <CompanySection />
-
       {/* Platform Section */}
       <PlatformSection />
-
-
       {/* Como Trabalhamos Section */}
       <ComoTrabalhamosSection />
       {/* Contact Section */}
       <ContactSection />
-
       {/* Footer */}
       <Footer />
     </div>
@@ -89,9 +81,10 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "Soluções", href: "#solucoes" },
-    { name: "Plataforma", href: "#plataforma" },
-    { name: "Empresa", href: "#empresa" },
+    { name: "Início", href: "#inicio" },
+    { name: "Sobre", href: "#empresa" },
+    { name: "Serviços", href: "#plataforma" },
+    { name: "Etapas", href: "#como-trabalhamos" },
     { name: "Contato", href: "#contato" },
   ];
 
@@ -196,15 +189,15 @@ const Header = () => {
 
 // Hero Section Component
 interface HeroSectionProps {
-  showWebsite: boolean
-  showMobile: boolean
-  codeProgress: number
-  onCodeProgress: (progress: number) => void
+  showWebsite: boolean;
+  showMobile: boolean;
+  codeProgress: number;
+  onCodeProgress: (progress: number) => void;
 }
 
 const HeroSection = ({ showWebsite, showMobile, codeProgress, onCodeProgress }: HeroSectionProps) => {
   return (
-    <section className="relative min-h-screen flex items-center px-4 sm:px-6 lg:px-8 overflow-x-hidden">
+    <section id="inicio" className="relative min-h-screen flex items-center px-4 sm:px-6 lg:px-8 overflow-x-hidden">
       <div className={theme.spacing.container.maxWidth}>
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full">
           {/* Left Content */}
@@ -322,7 +315,7 @@ const HeroSection = ({ showWebsite, showMobile, codeProgress, onCodeProgress }: 
       </div>
     </section>
   )
-};
+}
 
 // Services Section Component - REMOVED 3D TILT, ONLY SCALE
 const ServicesSection = () => {
@@ -442,7 +435,10 @@ const PlatformSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-
+          <TextReveal
+            text="Nossa Consultoria"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6"
+          />
 
         </motion.div>
 

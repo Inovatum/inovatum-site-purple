@@ -5,7 +5,10 @@ import { TextReveal } from "./InnovativeAnimations";
 
 export const ComoTrabalhamosSection = () => {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-800/30">
+    <section
+      id="como-trabalhamos"
+      className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-800/30"
+    >
       <div className={theme.spacing.container.maxWidth}>
         <motion.div
           {...motionVariants.fadeIn}
